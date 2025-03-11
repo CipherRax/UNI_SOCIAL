@@ -4,8 +4,10 @@ import type { NextConfig } from "next";
 const nextConfig = {
   output: "export",
   images: {
-    unoptimized: true, // Required because GitHub Pages doesn't support Next.js image optimization
+    unoptimized: true, // Required for GitHub Pages
   },
+  basePath: "/REPO_NAME", // Replace with your actual repository name
+  assetPrefix: "/REPO_NAME", // Needed to load assets correctly
 };
 
 module.exports = nextConfig;
