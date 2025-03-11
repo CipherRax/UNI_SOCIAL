@@ -1,11 +1,10 @@
-
-'use client'
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Smile } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -44,7 +43,14 @@ export default function ChatPage() {
             onClick={() => setSelectedUser(user)}
           >
             <Avatar className="cursor-pointer" onClick={() => router.push(`/profile/${user.id}`)}>
-              <Image src={user.avatar} alt={user.name} width={40} height={40} className="rounded-full" />
+              <Image
+                src={user.avatar}
+                alt={user.name}
+                width={40}
+                height={40}
+                priority
+                className="rounded-full"
+              />
             </Avatar>
             <div>
               <p className="font-medium">{user.name}</p>
@@ -59,9 +65,19 @@ export default function ChatPage() {
         {selectedUser ? (
           <>
             <div className="p-4 border-b flex items-center gap-3">
-              <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push(`/profile/${selectedUser.id}`)}>
+              <div
+                className="flex items-center gap-3 cursor-pointer"
+                onClick={() => router.push(`/profile/${selectedUser.id}`)}
+              >
                 <Avatar>
-                  <Image src={selectedUser.avatar} alt={selectedUser.name} width={40} height={40} className="rounded-full" />
+                  <Image
+                    src={selectedUser.avatar}
+                    alt={selectedUser.name}
+                    width={40}
+                    height={40}
+                    priority
+                    className="rounded-full"
+                  />
                 </Avatar>
                 <h2 className="font-bold text-lg">{selectedUser.name}</h2>
               </div>
@@ -80,7 +96,9 @@ export default function ChatPage() {
               ))}
             </div>
             <div className="p-4 border-t flex gap-2 items-center">
-              <button className="p-2"><Smile size={24} /></button>
+              <button className="p-2">
+                <Smile size={24} />
+              </button>
               <Input
                 placeholder="Type a message..."
                 value={input}
@@ -97,4 +115,3 @@ export default function ChatPage() {
     </div>
   );
 }
-

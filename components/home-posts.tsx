@@ -1,24 +1,28 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Heart, MessageCircle, Share2 } from 'lucide-react'; // Icons for like, comment, and share
 
 const PostCard = ({ isMainPost }: { isMainPost?: boolean }) => {
   return (
     <div className={`relative ${isMainPost ? 'w-full h-72' : 'w-48 h-60'} bg-white shadow-lg rounded-md overflow-hidden`}>
       <div className="flex items-center p-2 border-b">
-        <img
+        <Image
           src="https://randomuser.me/api/portraits/men/1.jpg"
           alt="Profile Picture"
+          width={32} 
+          height={32} 
           className="w-8 h-8 rounded-full mr-2"
         />
         <span className="font-semibold text-sm">Username</span>
       </div>
       <div className="w-full h-full bg-gray-200">
-        <img
+        <Image
           src="https://via.placeholder.com/600x400"
           alt="Post"
-          className="object-cover w-full h-full"
+          layout="fill"
+          objectFit="cover"
         />
       </div>
       <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-2 flex justify-between items-center">

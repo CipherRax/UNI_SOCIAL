@@ -13,8 +13,7 @@ const StoresPage = () => {
   const [newStoreName, setNewStoreName] = useState("");
   const [newStoreDescription, setNewStoreDescription] = useState("");
   const [newStoreProduct, setNewStoreProduct] = useState("");
-  const [storeQuestionsAnswered, setStoreQuestionsAnswered] = useState(false);
-
+  
   const createStore = () => {
     const newStore = {
       id: stores.length + 1,

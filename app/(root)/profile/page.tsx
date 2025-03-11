@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
@@ -8,7 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { UserPlus, Image as ImageIcon, Users } from 'lucide-react';
 
 const user = {
-  name: "John maxwell",
+  name: "John Maxwell",
   bio: "Software Engineer | Tech Enthusiast | Foodie",
   coverPhoto: "/avatars/tech3.jpeg",
   profilePhoto: "/avatars/fine.jpeg",
@@ -22,9 +23,9 @@ const user = {
 };
 
 const posts = [
-  { type: 'text', content: "It is alwasys right to do what is right", user: "John Doe" },
+  { type: 'text', content: "It is always right to do what is right", user: "John Doe" },
   { type: 'image', content: "/avatars/quoteF.jpeg", user: "John Doe" },
-  { type: 'text', content: "if your dreams don't scrare ypou they are no big dreams, allways think big 💻☕", user: "John Doe" },
+  { type: 'text', content: "If your dreams don't scare you, they are not big dreams. Always think big 💻☕", user: "John Doe" },
   { type: 'image', content: "/avatars/quoteFFF.jpeg", user: "John Doe" },
 ];
 
@@ -35,7 +36,7 @@ export default function ProfilePage() {
     <div className="max-w-4xl mx-auto p-4">
       {/* Cover Photo & Profile Info */}
       <div className="relative">
-        <img src={user.coverPhoto} alt="Cover" className="w-full h-60 object-cover rounded-lg" />
+        <Image src={user.coverPhoto} alt="Cover" width={800} height={240} className="w-full h-60 object-cover rounded-lg" priority />
         <div className="absolute left-6 -bottom-12 flex items-center">
           <Avatar className="w-28 h-28 border-4 border-white">
             <AvatarImage src={user.profilePhoto} alt="Profile" />
@@ -47,14 +48,14 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      
+
       {/* Buttons */}
       <div className="mt-16 flex justify-between items-center">
         <Button variant="outline"><UserPlus size={16} className="mr-2" /> Add Friend</Button>
         <Button variant="outline"><ImageIcon size={16} className="mr-2" /> Edit Profile</Button>
       </div>
 
-      {/* Tabs (Posts, About, Friends, Photos) */}
+      {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
         <TabsList className="w-full flex justify-between bg-gray-100 p-2 rounded-lg">
           <TabsTrigger value="posts">Posts</TabsTrigger>
@@ -78,21 +79,11 @@ export default function ProfilePage() {
                 {post.type === 'text' ? (
                   <p className="text-lg">{post.content}</p>
                 ) : (
-                  <img src={post.content} alt="User Upload" className="w-full h-60 object-cover rounded-lg" />
+                  <Image src={post.content} alt="User Upload" width={500} height={300} className="w-full h-60 object-cover rounded-lg" priority />
                 )}
               </CardContent>
             </Card>
           ))}
-        </TabsContent>
-
-        {/* About Tab */}
-        <TabsContent value="about" className="mt-4">
-          <Card className="p-4">
-            <h2 className="font-bold text-lg">About</h2>
-            <p className="text-gray-600 mt-2">{user.bio}</p>
-            <p className="text-gray-600 mt-2">📍 Lives in Nairobi, Kenya</p>
-            <p className="text-gray-600 mt-2">I'm a passionate Software Engineering student with a strong interest in building scalable applications and solving real-world problems through code. Proficient in languages like JavaScript, Python, and Kotlin, I enjoy working on web and mobile development projects. Always eager to learn new technologies and collaborate on innovative solutions.</p>
-          </Card>
         </TabsContent>
 
         {/* Friends Tab */}
@@ -118,12 +109,9 @@ export default function ProfilePage() {
           <Card className="p-4">
             <h2 className="font-bold text-lg">Photos</h2>
             <div className="grid grid-cols-3 gap-4 mt-4">
-              <img src="/avatars/girlF.jpeg" alt="Photo 1" className="w-full h-32 object-cover rounded-lg" />
-              <img src="/avatars/girlTwo.jpeg" alt="Photo 2" className="w-full h-32 object-cover rounded-lg" />
-              <img src="/avatars/girlOne.jpeg" alt="Photo 3" className="w-full h-32 object-cover rounded-lg" />
-              <img src="/avatars/quoteF.jpeg" alt="Photo 3" className="w-full h-32 object-cover rounded-lg" />
-              <img src="/avatars/tech5.jpeg" alt="Photo 3" className="w-full h-32 object-cover rounded-lg" />
-              <img src="/avatars/sport2.jpeg" alt="Photo 3" className="w-full h-32 object-cover rounded-lg" />
+              {["/avatars/girlF.jpeg", "/avatars/girlTwo.jpeg", "/avatars/girlOne.jpeg", "/avatars/quoteF.jpeg", "/avatars/tech5.jpeg", "/avatars/sport2.jpeg"].map((photo, index) => (
+                <Image key={index} src={photo} alt={`Photo ${index + 1}`} width={150} height={128} className="w-full h-32 object-cover rounded-lg" priority />
+              ))}
             </div>
           </Card>
         </TabsContent>

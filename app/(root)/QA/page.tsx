@@ -26,7 +26,7 @@ const QAPage = () => {
 
   const [newQuestion, setNewQuestion] = useState("");
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
-  const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
+  
 
   const postQuestion = () => {
     if (newQuestion.trim() === "") return;

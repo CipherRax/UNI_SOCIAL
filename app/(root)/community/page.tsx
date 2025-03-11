@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -29,9 +30,11 @@ export default function CommunityPage() {
           { name: 'Wildlife', img: '/wildlife.jpg' },
         ].map((community, index) => (
           <Card key={index} className="overflow-hidden">
-            <img
+            <Image
               src={community.img}
               alt={community.name}
+              width={300}
+              height={160}
               className="w-full h-40 object-cover"
             />
             <CardContent className="p-3 text-lg font-semibold">

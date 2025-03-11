@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -31,7 +31,7 @@ const cards = [
 ];
 
 export default function ITDashboard() {
-  const [openMenu, setOpenMenu] = useState<number | null>(null);
+  // const [openMenu, setOpenMenu] = useState<number | null>(null);
 
   return (
     <div className="p-6 max-w-3xl mx-auto space-y-6">

@@ -4,7 +4,6 @@ import * as React from "react"
 import { GalleryVerticalEnd } from "lucide-react"
 import { usePathname } from 'next/navigation'; // Import usePathname
 import Link from 'next/link'; 
-import { useState } from 'react';
 
 import {
   Sidebar,
